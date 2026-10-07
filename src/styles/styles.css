@@ -1,0 +1,275 @@
+/* =========================
+   CONFIGURACIÓN GENERAL
+========================= */
+
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #152238;
+  background-color: #f6f8fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #f6f8fb;
+  color: #152238;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.app-header {
+  padding: 1.5rem 0;
+  color: #ffffff;
+  background: linear-gradient(135deg, #17375e, #102b4c);
+}
+
+.app-header__contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.app-header__titulo {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.app-header__descripcion {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* =========================
+   PANELES
+========================= */
+
+.panel {
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #e7ebf0;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.25rem 1rem rgba(15, 35, 60, 0.06);
+}
+
+.panel__titulo {
+  margin: 0 0 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.formulario-panel {
+  position: sticky;
+  top: 1rem;
+}
+
+/* =========================
+   FORMULARIO
+========================= */
+
+.form-label {
+  color: #152238;
+}
+
+.form-control,
+.form-select {
+  border-color: #ced6e0;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: #4285f4;
+  box-shadow: 0 0 0 0.2rem rgba(66, 133, 244, 0.15);
+}
+
+.form-check-input {
+  cursor: pointer;
+}
+
+.form-check-label {
+  cursor: pointer;
+}
+
+/* =========================
+   FILTROS
+========================= */
+
+.filtros {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #eef5ff;
+  border: 1px solid #e1ebf8;
+  border-radius: 0.75rem;
+}
+
+/* =========================
+   LISTA
+========================= */
+
+.colaboradores__encabezado {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.colaboradores__encabezado h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.colaboradores__cantidad {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.65rem;
+
+  background-color: #e7edf5;
+  border-radius: 999px;
+
+  font-weight: 700;
+}
+
+/* =========================
+   CARD COLABORADOR
+========================= */
+
+.colaborador-card {
+  height: 100%;
+  padding: 1.25rem;
+
+  background-color: #ffffff;
+  border: 1px solid #e5e9ef;
+  border-radius: 0.75rem;
+
+  box-shadow: 0 0.25rem 1rem rgba(15, 35, 60, 0.06);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.colaborador-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.25rem rgba(15, 35, 60, 0.1);
+}
+
+.colaborador-card__info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 7rem;
+}
+
+.colaborador-card__avatar {
+  width: 5.5rem;
+  height: 5.5rem;
+
+  flex-shrink: 0;
+
+  object-fit: cover;
+  border-radius: 50%;
+
+  background-color: #eaf2ff;
+}
+
+.colaborador-card__nombre {
+  margin: 0 0 0.5rem;
+
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.colaborador-card__departamento {
+  display: inline-block;
+
+  padding: 0.3rem 0.65rem;
+
+  color: #1459a6;
+  background-color: #e5f0ff;
+
+  border-radius: 0.5rem;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.colaborador-card__acciones {
+  display: flex;
+  gap: 0.75rem;
+
+  margin-top: 1rem;
+  padding-top: 1rem;
+
+  border-top: 1px solid #e5e9ef;
+}
+
+.colaborador-card__acciones .btn {
+  flex: 1;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.btn {
+  font-weight: 600;
+}
+
+/* =========================
+   RESPONSIVE - Igual vamos a usar Bootstrap!!!!!!!!1
+========================= */
+
+@media (max-width: 991.98px) {
+  .app-header__contenido {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .app-header__titulo {
+    font-size: 1.6rem;
+  }
+
+  .formulario-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .app-header {
+    padding: 1.25rem 0;
+  }
+
+  .panel,
+  .filtros {
+    padding: 1.25rem;
+  }
+
+  .colaborador-card__info {
+    align-items: flex-start;
+  }
+
+  .colaborador-card__avatar {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .colaborador-card__acciones {
+    flex-direction: column;
+  }
+}
