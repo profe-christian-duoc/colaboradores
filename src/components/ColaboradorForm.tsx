@@ -1,4 +1,33 @@
-export const ColaboradorForm = () => {
+import { useState } from "react";
+import type { Colaborador } from "../types/Colaborador";
+// import { colaboradores } from "../data/colaboradores";
+// import avatarMasculino from "../assets/img/avatar_masculino.png";
+// import avatarFemenino from "../assets/img/avatar_femenino.png";
+
+interface ColaboradorFormProps {
+  onRegistrar: (colaborador: Colaborador) => void;
+}
+
+export const ColaboradorForm = ({ onRegistrar }: ColaboradorFormProps) => {
+  const [nombre, setNombre] = useState("");
+  const [departamento, setDepartamento] = useState("");
+  const [genero, setGenero] = useState<"masculino" | "femenino">("masculino");
+  // const avatar = genero === "masculino" ? avatarMasculino : avatarFemenino;
+
+  const registrarColaborador = () => {
+    const nuevoColaborar: Colaborador = {
+      id: Date.now(),
+      nombre: nombre,
+      departamento: departamento,
+      genero: genero,
+    };
+
+    onRegistrar(nuevoColaborar);
+
+    setNombre("");
+    setDepartamento("");
+    setGenero("masculino");
+  };
   return (
     <section className="panel formulario-panel">
       <h2 className="panel__titulo">Registrar colaborador</h2>
@@ -12,7 +41,9 @@ export const ColaboradorForm = () => {
           <input
             id="nombre"
             type="text"
+            value={nombre}
             className="form-control form-control-lg"
+            onChange={(event) => setNombre(event.target.value)}
             placeholder="Ingresa el nombre..."
           />
         </div>
@@ -25,7 +56,8 @@ export const ColaboradorForm = () => {
           <select
             id="departamento"
             className="form-select form-select-lg"
-            defaultValue=""
+            value={departamento}
+            onChange={(event) => setDepartamento(event.target.value)}
           >
             <option value="" disabled>
               Selecciona un departamento
@@ -48,7 +80,8 @@ export const ColaboradorForm = () => {
                 type="radio"
                 name="genero"
                 value="masculino"
-                defaultChecked
+                checked={genero === "masculino"}
+                onChange={() => setGenero("masculino")}
               />
 
               <label className="form-check-label" htmlFor="masculino">
@@ -63,6 +96,8 @@ export const ColaboradorForm = () => {
                 type="radio"
                 name="genero"
                 value="femenino"
+                checked={genero === "femenino"}
+                onChange={() => setGenero("femenino")}
               />
 
               <label className="form-check-label" htmlFor="femenino">
@@ -73,7 +108,11 @@ export const ColaboradorForm = () => {
         </fieldset>
 
         <div className="d-flex gap-2">
-          <button type="button" className="btn btn-primary flex-grow-1">
+          <button
+            type="button"
+            className="btn btn-primary flex-grow-1"
+            onClick={registrarColaborador}
+          >
             Registrar
           </button>
 
@@ -82,6 +121,18 @@ export const ColaboradorForm = () => {
           </button>
         </div>
       </form>
+      {/* <hr></hr>
+      <h1>Prueba</h1>
+      <p className="mb-1">
+        Nombre: <strong>{nombre}</strong>
+      </p>
+      <p className="mb-0">
+        Género: <strong>{genero}</strong>
+      </p>
+      <p className="mb-0">
+        Departamento: <strong>{departamento}</strong>
+      </p>
+      <img src={avatar} /> */}
     </section>
   );
 };

@@ -1,7 +1,12 @@
-import { colaboradores } from "../data/colaboradores";
+import type { Colaborador } from "../types/Colaborador";
 import { ColaboradorCard } from "./ColaboradorCard";
 
-export const ColaboradoresLista = () => {
+interface ColaboradoresListaProps {
+  colaboradores: Colaborador[];
+}
+export const ColaboradoresLista = ({
+  colaboradores,
+}: ColaboradoresListaProps) => {
   return (
     <section className="colaboradores">
       <div className="colaboradores__encabezado">
@@ -12,7 +17,7 @@ export const ColaboradoresLista = () => {
 
       <div className="row g-3">
         {colaboradores.map((colaborador) => (
-          <div className="col-12 col-md-6" key={colaborador.id}>
+          <div className="col-12 col-lg-6 col-md-6" key={colaborador.id}>
             <ColaboradorCard
               id={colaborador.id}
               nombre={colaborador.nombre}
