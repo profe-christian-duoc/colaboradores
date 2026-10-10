@@ -1,7 +1,14 @@
-import { colaboradores } from "../data/colaboradores";
+import type { Colaborador } from "../types/Colaborador";
 import { ColaboradorCard } from "./ColaboradorCard";
 
-export const ColaboradoresLista = () => {
+interface ColaboradoresListaProps {
+  colaboradores: Colaborador[];
+  onEliminar: (id: Number) => void;
+}
+export const ColaboradoresLista = ({
+  colaboradores,
+  onEliminar,
+}: ColaboradoresListaProps) => {
   return (
     <section className="colaboradores">
       <div className="colaboradores__encabezado">
@@ -18,6 +25,7 @@ export const ColaboradoresLista = () => {
               nombre={colaborador.nombre}
               departamento={colaborador.departamento}
               genero={colaborador.genero}
+              onEliminar={onEliminar}
             />
           </div>
         ))}
